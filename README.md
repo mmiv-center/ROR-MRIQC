@@ -23,7 +23,7 @@ We install dcm2niix.
 apt update; apt install dcm2niix
 ```
 
-We store a general 'work.sh' script in the /app directory inside the container:
+We store a general 'work.sh' script in the /app/ directory inside the container and specify that script as the entrypoint for the container. It should be sufficient to call the container with argument "/data" (mount point for the input directory). The input directory was created using the ror application.
 
 ```bash
 #!/usr/bin/env bash
