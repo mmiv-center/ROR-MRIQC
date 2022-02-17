@@ -91,10 +91,11 @@ output=sys.argv[4]
 print("PatientID: %s, event: %s input file: %s" % (patientID, event, input))
 
 data = {}
+with open(input, 'r') as f:
     config = json.load(f)
-    for key, value in config.items():
-        print("key: %s, value: %s" % (key, value))
-        data[key] = { 'record_id': patientID, 'event_name': "%s_arm_1" % (event), 'field_name': key, 'value': value }
+for key, value in config.items():
+    print("key: %s, value: %s" % (key, value))
+    data[key] = { 'record_id': patientID, 'event_name': "%s_arm_1" % (event), 'field_name': key, 'value': value }
 
 print(json.dumps(data))
 with open(output, 'w') as f:
